@@ -1,5 +1,7 @@
 package App.model;
 
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,11 +10,12 @@ import static App.Service.filehandler.file;
 public class Spotifytest {
 
 public static void main(String[] args) {
-
+int p = 1;
     Scanner sc = new Scanner(System.in);
-     while(true) {
+     while(p == 1) {
          printmenu();
          int call = Integer.parseInt(sc.nextLine());
+         p = action(sc, call);
      }
 }
     public static void printmenu () {
@@ -25,18 +28,21 @@ public static void main(String[] args) {
         System.out.println("5. Exit");
         System.out.print("Choose an option: ");
     }
-    public static void action(Scanner sc, int call){
-        ArrayList<Song> songs = new ArrayList<>();
+    public static int action(Scanner sc, int call){
+
     if (call == 1 ){
         System.out.println("Type title of song");
         String title = sc.nextLine();
         System.out.println("Type Author of song");
         String Author = sc.nextLine();
-        songs.add(new Song(title,Author));
+        songs.add(new String(title + " - " + Author));
+        return 1;
     }else if(call == 5){
-       return Song.getName();
-     file();
-    }
 
+     file();
+    return 0;
     }
+return 1;
+    }
+    public static ArrayList<String> songs = new ArrayList<>();
 }

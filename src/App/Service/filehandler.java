@@ -4,7 +4,9 @@ import java.io.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+
+import static App.model.Spotifytest.songs;
+
 
 public class filehandler {
     public static void file(){
@@ -13,9 +15,9 @@ public class filehandler {
     try {
 
         BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter("src\\App\\Service\\songs.txt"));
-        for(int i = 1; i <= 10; i++) {
+        for(String tekst : songs) {
 
-            bufferedwriter.write(songs);
+            bufferedwriter.write(String.valueOf(Spotifytest.songs));
             bufferedwriter.newLine();
         }
         bufferedwriter.close();
