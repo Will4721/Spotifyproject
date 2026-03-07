@@ -26,13 +26,13 @@ public class Song implements Comparable<Song> {
 
         @Override
         public String toString() {
-            return navn + " - " + author;
+            return navn + " - " + author + " - "+ genre;
         }
 
 
     @Override
     public int compareTo(Song o) {
-        return o.navn.compareTo(this.navn);
+        return this.navn.compareToIgnoreCase(o.navn);
     }
 
   

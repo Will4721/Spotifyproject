@@ -25,12 +25,12 @@ public static void main(String[] args) {
     String prem = sc.nextLine();
     file2();
      while(p == 1) {
-         printmenu();
+         printmenu(prem);
          int call = Integer.parseInt(sc.nextLine());
          p = action(sc, call,prem, printer);
      }
 }
-    public static void printmenu () {
+    public static void printmenu (String prem) {
 
         System.out.println("\nMenu:");
         System.out.println("1. add song");
@@ -40,6 +40,9 @@ public static void main(String[] args) {
         System.out.println("5. Rediger i sang");
         System.out.println("6. Sort sanglisten");
         System.out.println("7. Exit");
+        if(prem.equalsIgnoreCase("yes")){
+            System.out.println("8. Download song");
+        }
         System.out.print("Choose an option: ");
     }
     public static int action(Scanner sc, int call,String prem,Thread printer){
@@ -54,11 +57,26 @@ public static void main(String[] args) {
         System.out.println("Type Singer of song");
         String Author = sc.nextLine();
         System.out.println("Type Genre of song?\nChoose between these: Classical, Blues,Folk, Pop, Rock, HipHop, RB, EDM, Country  WARNING:Case sensitive");
-        Genre Type = Genre.valueOf(sc.nextLine());
+        Genre Type = null;
+        try {
+            Type = Genre.valueOf(sc.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid genre. Please choose one of the listed genres.");
+            return 1;
+        }
         songs.add(new Song(title,Author,Type));
 
         return 1;
-    }else if(call == 4){
+    }else if(call == 3){
+        String find = sc.nextLine();
+        for (Song s : songs) {
+            if (s.getNavn().equalsIgnoreCase(find)) {
+                System.out.println(s);
+                return 1;
+            }
+        }
+        System.out.println("Song not found");
+    } else if(call == 4){
         System.out.println(songs);
         System.out.println("done");
         return 1;
@@ -81,11 +99,19 @@ public static void main(String[] args) {
      file();
     return 0;
     }else if(call == 2){
-    String remove = sc.nextLine();
+    System.out.println("delete by typing index number");
+    int remove = Integer.parseInt(sc.nextLine());
     songs.remove(remove);
     return 1;
+    }else if(call == 8){
+        System.out.println("download by typing index number");
+        int download = Integer.parseInt(sc.nextLine());
+        System.out.println("you have downloaded: " + songs.get(download));
+        return 1;
     }
 return 1;
     }
     public static ArrayList<Song> songs = new ArrayList<>();
+
+
 }
