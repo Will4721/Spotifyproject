@@ -48,13 +48,15 @@ public static void main(String[] args) {
             printer.start();
         }
     if (call == 1 ){
+
         System.out.println("Type title of song");
         String title = sc.nextLine();
         System.out.println("Type Singer of song");
         String Author = sc.nextLine();
         System.out.println("Type Genre of song?\nChoose between these: Classical, Blues,Folk, Pop, Rock, HipHop, RB, EDM, Country  WARNING:Case sensitive");
-        String Type = sc.nextLine();
-        songs.add(new String(title + " - " + Author + " - " + Genre.valueOf(Type)));
+        Genre Type = Genre.valueOf(sc.nextLine());
+        songs.add(new Song(title,Author,Type));
+
         return 1;
     }else if(call == 4){
         System.out.println(songs);
@@ -66,8 +68,11 @@ public static void main(String[] args) {
         System.out.println("type integer");
         int number = Integer.parseInt(sc.nextLine());
         System.out.println("now type the new title");
-        String ntitle = sc.nextLine();
-        songs.set(number, ntitle);
+        Song song = songs.get(number);
+        String nname = sc.nextLine();
+        song.setNavn(nname);
+
+        songs.set(number, song );
         return 1;
     } else if(call == 6){
         Collections.sort(songs);
@@ -82,5 +87,5 @@ public static void main(String[] args) {
     }
 return 1;
     }
-    public static ArrayList<String> songs = new ArrayList<>();
+    public static ArrayList<Song> songs = new ArrayList<>();
 }

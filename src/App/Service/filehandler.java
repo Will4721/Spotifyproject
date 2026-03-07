@@ -15,7 +15,7 @@ public class filehandler {
     try {
 
         BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter("src\\App\\model\\songs.txt"));
-        for(String tekst : songs) {
+        for(Song tekst : songs) {
 
             bufferedwriter.write(String.valueOf(Spotifytest.songs));
             bufferedwriter.newLine();

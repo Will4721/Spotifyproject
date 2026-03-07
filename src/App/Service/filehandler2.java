@@ -1,5 +1,7 @@
 package App.Service;
 
+import App.model.Genre;
+import App.model.Song;
 import App.model.Spotifytest;
 
 import java.io.*;
@@ -15,7 +17,7 @@ public class filehandler2 {
             BufferedReader br = new BufferedReader(new FileReader("src\\App\\model\\songs.txt"));
             {
                 while (br.ready()) {
-                    songs.add(br.readLine());
+                    songs.add(new Song(br.readLine(), br.readLine(), Genre.valueOf(br.readLine())));
 
                 }
 

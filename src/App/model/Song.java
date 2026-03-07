@@ -1,15 +1,22 @@
 package App.model;
 
-public class Song {
+public class Song implements Comparable<Song> {
         private String navn;
         private String author;
+        private Genre genre;
 
-    public Song(String navn, String author) {
+    public Song(String navn, String author,Genre genre) {
             this.navn = navn;
             this.author = author;
+            this.genre = genre;
         }
 
-        public String getNavn() {
+    public void setNavn(String navn) {
+
+        this.navn = navn;
+
+    }
+    public String getNavn() {
             return navn;
         }
 
@@ -22,4 +29,11 @@ public class Song {
             return navn + " - " + author;
         }
 
+
+    @Override
+    public int compareTo(Song o) {
+        return o.navn.compareTo(this.navn);
     }
+
+  
+}
