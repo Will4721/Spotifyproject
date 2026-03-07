@@ -14,7 +14,7 @@ public class filehandler {
     long startTime = System.nanoTime();
     try {
 
-        BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter("src\\App\\Service\\songs.txt"));
+        BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter("src\\App\\model\\songs.txt"));
         for(String tekst : songs) {
 
             bufferedwriter.write(String.valueOf(Spotifytest.songs));
