@@ -34,3 +34,4 @@ public class filehandler3 {
         System.out.println("CPU tid (nanosekunder): " + duration);
     }
 }
+//finito
