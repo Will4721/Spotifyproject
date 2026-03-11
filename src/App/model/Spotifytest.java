@@ -1,5 +1,6 @@
 package App.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 
 import static App.Service.filehandler.file;
 import static App.Service.filehandler2.file2;
+import static App.Service.filehandler3.file3;
 
 public class Spotifytest {
     //jeg ville gerne lave API som henter lyrics ned og lave en play funktion Api'en kommer fra Genius
@@ -114,34 +116,41 @@ public static void main(String[] args) {
         }else if(call == 8){
             System.out.println("how many songs do you wish to enter in playlist");
             int howmany = Integer.parseInt(sc.nextLine());
-            for(int i=-1;i < howmany; i++ ){
-                System.out.println("what song should be added?");
-            String find = sc.nextLine();
-            //den går ikke vidre her fra
-                //aengkjehehgiejhgjearhojaerkjgkerjnkjen
-                //nsbgkhwhijæhnekjnhækernkhneknbknb
-                //wnegkekhnerkhnekjgkejrngkerjnhknehneh
-                // ||||||||||||||||||||||||||||||||||
-                // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-            for (Song s : songs) {
-                if (s.getNavn().equalsIgnoreCase(find)) {
-                    System.out.println(s);
-                    System.out.println("type in author name?");
-                    String findaut = sc.nextLine();
-                    System.out.println("type in Genre name?");
-                    Genre Type = null;
-                    try {
-                        Type = Genre.valueOf(sc.nextLine());
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Invalid genre. Please choose one of the listed genres.");
+            for(int i=0;i < howmany; i++ ) {
+                try {
+                    System.out.println("what song should be added?");
+                    String find = sc.nextLine();
+                    //den går ikke vidre her fra
+                    //opdagede at den lave NumberformatExeption når man skrev navn case sensitive og det er blevert fikset med try and catch
+                    //men den printer stadig ikke ud det i catch og hvorfor skal man skrive det case senstive når jeg har sagt ignorer det
+                    // ||||||||||||||||||||||||||||||||||
+                    // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+                    for (Song s : songs) {
+                        if (s.getNavn().equalsIgnoreCase(find)) {
+                            System.out.println(s);
+                            System.out.println("type in author name?");
+                            String findaut = sc.nextLine();
+                            System.out.println("type in Genre name?");
+                            Genre Type = null;
+                            try {
+                                Type = Genre.valueOf(sc.nextLine());
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("Invalid genre. Please choose one of the listed genres.");
+
+                            }
+                            playlist.add(new Song(find, findaut, Type));
+                            System.out.println("here" + playlist);
+
+                        }
 
                     }
-                    playlist.add(new Song(find,findaut,Type));
-                    System.out.println("here" + playlist);
+                    }catch(NumberFormatException e){
+                    System.out.println("what the fuck");
                 }
-                    return 1;
-                }
+
             }
+            file3();
+            return 1;
         } else if(call == 9){
         System.out.println("download by typing index number");
         int download = Integer.parseInt(sc.nextLine());
