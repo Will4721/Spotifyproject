@@ -1,15 +1,9 @@
 package App.model;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.net.URLEncoder;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-//import org.json.JSONObject;
-//import org.json.JSONArray;
+
 
 import static App.Service.filehandler.file;
 import static App.Service.filehandler2.file2;
@@ -53,7 +47,7 @@ public static void main(String[] args) {
         System.out.println("5. Rediger i sang");
         System.out.println("6. Sort sanglisten");
         System.out.println("7. Exit");
-        //System.out.println("8. Play song");
+        System.out.println("8. create playlist");
         if(prem.equalsIgnoreCase("yes")){
             System.out.println("9. Download song");
         }
@@ -117,6 +111,37 @@ public static void main(String[] args) {
             int remove = Integer.parseInt(sc.nextLine());
             songs.remove(remove);
             return 1;
+        }else if(call == 8){
+            System.out.println("how many songs do you wish to enter in playlist");
+            int howmany = Integer.parseInt(sc.nextLine());
+            for(int i=-1;i < howmany; i++ ){
+                System.out.println("what song should be added?");
+            String find = sc.nextLine();
+            //den går ikke vidre her fra
+                //aengkjehehgiejhgjearhojaerkjgkerjnkjen
+                //nsbgkhwhijæhnekjnhækernkhneknbknb
+                //wnegkekhnerkhnekjgkejrngkerjnhknehneh
+                // ||||||||||||||||||||||||||||||||||
+                // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+            for (Song s : songs) {
+                if (s.getNavn().equalsIgnoreCase(find)) {
+                    System.out.println(s);
+                    System.out.println("type in author name?");
+                    String findaut = sc.nextLine();
+                    System.out.println("type in Genre name?");
+                    Genre Type = null;
+                    try {
+                        Type = Genre.valueOf(sc.nextLine());
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Invalid genre. Please choose one of the listed genres.");
+
+                    }
+                    playlist.add(new Song(find,findaut,Type));
+                    System.out.println("here" + playlist);
+                }
+                    return 1;
+                }
+            }
         } else if(call == 9){
         System.out.println("download by typing index number");
         int download = Integer.parseInt(sc.nextLine());
@@ -126,6 +151,6 @@ public static void main(String[] args) {
 return 1;
     }
     public static ArrayList<Song> songs = new ArrayList<>();
-
+    public static ArrayList<Song> playlist = new ArrayList<>();
 
 }
