@@ -1,6 +1,6 @@
 package App.Service;
-import App.model.*;
-import java.io.*;
+import App.Ui.Song;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class filehandler {
         BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter("src\\App\\model\\songs.txt"));
         for(Song tekst : songs) {
 
-            bufferedwriter.write(String.valueOf(Spotifytest.songs));
+            bufferedwriter.write(String.valueOf(String.valueOf(tekst)));
             bufferedwriter.newLine();
         }
         bufferedwriter.close();

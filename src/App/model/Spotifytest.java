@@ -1,6 +1,7 @@
 package App.model;
 
-import java.io.IOException;
+import App.Ui.Song;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -117,14 +118,9 @@ public static void main(String[] args) {
             System.out.println("how many songs do you wish to enter in playlist");
             int howmany = Integer.parseInt(sc.nextLine());
             for(int i=0;i < howmany; i++ ) {
-                try {
+
                     System.out.println("what song should be added?");
                     String find = sc.nextLine();
-                    //den går ikke vidre her fra
-                    //opdagede at den lave NumberformatExeption når man skrev navn case sensitive og det er blevert fikset med try and catch
-                    //men den printer stadig ikke ud det i catch og hvorfor skal man skrive det case senstive når jeg har sagt ignorer det
-                    // ||||||||||||||||||||||||||||||||||
-                    // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                     for (Song s : songs) {
                         if (s.getNavn().equalsIgnoreCase(find)) {
                             System.out.println(s);
@@ -144,10 +140,6 @@ public static void main(String[] args) {
                         }
 
                     }
-                    }catch(NumberFormatException e){
-                    System.out.println("what the fuck");
-                }
-
             }
             file3();
             return 1;

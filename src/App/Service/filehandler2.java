@@ -1,8 +1,7 @@
 package App.Service;
 
 import App.model.Genre;
-import App.model.Song;
-import App.model.Spotifytest;
+import App.Ui.Song;
 
 import java.io.*;
 
@@ -16,10 +15,19 @@ public class filehandler2 {
 
             BufferedReader br = new BufferedReader(new FileReader("src\\App\\model\\songs.txt"));
             {
-                while (br.ready()) {
-                    songs.add(new Song(br.readLine(), br.readLine(), Genre.valueOf(br.readLine())));
+                String line;
+                while ((line = br.readLine()) != null) {
 
+                    String[] parts = line.split(" - ");
+
+                    String title = parts[0];
+                    String author = parts[1];
+                    Genre genre = Genre.valueOf(parts[2]);
+
+                    songs.add(new Song(title, author, genre));
                 }
+
+                br.close();
 
                 long endTime = System.nanoTime();  // Slut CPU tid
                 long duration = endTime - startTime;

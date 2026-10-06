@@ -1,6 +1,6 @@
 package App.Service;
 
-import App.model.Song;
+import App.Ui.Song;
 import App.model.Spotifytest;
 
 import java.io.BufferedWriter;
@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static App.model.Spotifytest.playlist;
-import static App.model.Spotifytest.songs;
 
 public class filehandler3 {
     public static void file3(){

@@ -1,4 +1,6 @@
-package App.model;
+package App.Ui;
+
+import App.model.Genre;
 
 public class Song implements Comparable<Song> {
         private String navn;
